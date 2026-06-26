@@ -5,6 +5,7 @@ import { StatusCodes } from "http-status-codes";
 import config from "./config";
 import globalErrorHandler from "./middleware/globalErrorHandler";
 import AppError from "./errors/AppError";
+import { authRoute } from "./modules/auth/auth.route";
 
 const app: Application = express();
 
@@ -22,6 +23,7 @@ app.get("/", (_req: Request, res: Response) => {
 });
 
 
+app.use('/api/v1', authRoute);
 
 
 // 404 handler — must be after all routes
